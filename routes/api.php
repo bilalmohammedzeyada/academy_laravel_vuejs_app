@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('fields','FieldsController@index');
+Route::get('fields/{id}','FieldsController@show');
+Route::post('fields','FieldsController@store');
+Route::put('fields','FieldsController@store');
+Route::delete('fields/{id}','FieldsController@destroy');
