@@ -13,9 +13,15 @@ class CreateUserLessonRelation extends Migration
      */
     public function up()
     {
-        Schema::create('user_lesson_relation', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('user_lesson', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('lesson_id');
+            $table->boolean('is_watched');
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('lesson_id')->references('id')->on('lessons');
+            // composit primary key
+            $table->primary(['user_id', 'lesson_id']);
         });
     }
 

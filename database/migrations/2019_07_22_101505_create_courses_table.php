@@ -14,8 +14,9 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('field_id');
+            $table->bigIncrements('id');
+            $table->unsignedInteger('field_id');
+            $table->unsignedBigInteger('teacher_id');
             $table->string('title',500);
             $table->text('description');
             $table->string('cover_image');
@@ -23,6 +24,7 @@ class CreateCoursesTable extends Migration
             $table->timestamp('created_at');
 
             $table->foreign('field_id')->references('id')->on('fields');
+            $table->foreign('teacher_id')->references('id')->on('teachers');
         });
     }
 
