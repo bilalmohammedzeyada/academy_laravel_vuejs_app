@@ -1,0 +1,21 @@
+
+With Paid Membership ------------------------------------------
+users(_id,first_name,last_name,is_admin,is_paid_membership,)
+teachers(_user_id*  ,about_me,earnings,is_approved,profile_image,created_at)
+courses(_id,field_id*,title,description,is_paid,cover_img,is_approved,created_at)
+rating(user_id*,course_id*,  rating)
+fields(_id,title,cover_image)
+lessons(_id,course_id*,order,title,description,is_paid,thumbnail_img,video_file,created_at)
+lessons_watching(user_id*,lesson_id*,  total_watching_curr_month)
+enrollments(user_id*,course_id*,    enrolled_at)
+
+
+
+Without Membership (free) --------------------------------------
+users(_id,username,email,password,email_verified_at,first_name,last_name,is_admin,created_at,updated_at) Unique(username,email)
+teachers(_user_id*  ,about_me,is_approved,profile_image,created_at)
+courses(_id,field_id*,title,description,cover_img,is_approved,created_at)
+user_course(user_id*,course_id*,  rating,is_favoured)
+fields(_id,title,cover_image)
+lessons(_id,course_id*,order,title,description,thumbnail_image,video_file,created_at)
+user_lesson(user_id*,lesson_id*, is_watched,)
