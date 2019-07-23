@@ -38,4 +38,8 @@ class User extends Authenticatable
     ];
 
     
+    public function teacher()
+    {
+        return $this->hasOne('App\Teacher');
+    }
 }
