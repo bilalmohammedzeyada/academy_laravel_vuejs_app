@@ -7,7 +7,7 @@
 require("./bootstrap");
 
 import Vue from "vue";
-import ExampleComponent from "./components/ExampleComponent.vue";
+
 window.Vue = require("vue");
 
 /**
@@ -20,8 +20,13 @@ window.Vue = require("vue");
 
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+import store from "./store";
+import router from "./routes";
+import AppComponent from "./components/AppComponent.vue";
+import NavbarComponent from "./components/NavbarComponent.vue";
 
-Vue.component("example-component", ExampleComponent);
+Vue.component("app", AppComponent);
+Vue.component("nav-bar", NavbarComponent);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,5 +35,7 @@ Vue.component("example-component", ExampleComponent);
  */
 
 const app = new Vue({
-    el: "#app"
+    store: store,
+    el: "#app",
+    router
 });
