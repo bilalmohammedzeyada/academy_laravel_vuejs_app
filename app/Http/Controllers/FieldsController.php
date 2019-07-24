@@ -31,9 +31,10 @@ class FieldsController extends Controller
     public function store(Request $request)
     {
 
-        $field=$request->isMethod('put')?Field::findOrFail
-        ($request->field_id):new Field;
+        $field=new Field;
         $field->title=$request->input('title');
+
+        // todo this is a file to be uploaded and stored
         $field->cover_image=$request->input('cover_image');
         if($field->save()){
             return new FieldResource($field);
@@ -54,7 +55,26 @@ class FieldsController extends Controller
         return new FieldResource($field);
     }
 
-  
+      
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $field=Field::findOrFail($id);
+        $field->title=$request->input('title');
+
+        // todo this is a file to be uploaded and stored
+        $field->cover_image=$request->input('cover_image');
+        if($field->save()){
+            return new FieldResource($field);
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.
