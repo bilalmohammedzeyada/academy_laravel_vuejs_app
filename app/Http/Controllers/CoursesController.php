@@ -8,6 +8,7 @@ use App\Teacher;
 use App\Field;
 use App\Course;
 use App\Http\Resources\Course as CourseResource;
+use App\Http\Resources\Lesson as LessonResource;
 
 class CoursesController extends Controller
 {
@@ -104,5 +105,21 @@ class CoursesController extends Controller
         if($course->delete()){
             return new CourseResource($course);
         }
+    }
+
+    // ---------------- additional methods ------------------------
+
+
+    /**
+     * Display course lessons.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showLessonsByCourse($id)
+    {
+        $course=Course::findOrFail($id);
+        $lessons=$course->lessons;
+        return LessonResource::collection($lessons);
     }
 }

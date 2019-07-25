@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Field;
 use App\Http\Resources\Field as FieldResource;
+use App\Http\Resources\Course as CourseResource;
 
 class FieldsController extends Controller
 {
@@ -90,4 +91,21 @@ class FieldsController extends Controller
         }
         
     }
+
+    // ---------------- additional methods ------------------------
+
+
+    /**
+     * Display field courses.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showCoursesByField($id)
+    {
+        $field=Field::findOrFail($id);
+        $courses=$field->courses;
+        return CourseResource::collection($courses);
+    }
+
 }

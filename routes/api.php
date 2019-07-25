@@ -23,7 +23,8 @@ Route::get('fields/{id}','FieldsController@show');
 Route::post('fields','FieldsController@store');
 Route::put('fields/{id}','FieldsController@update');
 Route::delete('fields/{id}','FieldsController@destroy');
-
+// get courses by field
+Route::get('fields/{id}/courses','FieldsController@showCoursesByField');
 
 // teachers api
 Route::get('teachers','TeachersController@index');
@@ -32,7 +33,8 @@ Route::post('teachers','TeachersController@store');
 Route::put('teachers/{id}','TeachersController@update');
 Route::delete('teachers/{id}','TeachersController@destroy');
 // get courses by teacher
-Route::get('teachers/{id}/courses','TeachersController@showCoursesByTeacher');  
+Route::get('teachers/{id}/courses','TeachersController@showCoursesByTeacher');
+
 
 // courses api
 Route::get('courses','CoursesController@index');
@@ -40,6 +42,17 @@ Route::get('courses/{id}','CoursesController@show');
 Route::post('courses','CoursesController@store');
 Route::put('courses/{id}','CoursesController@update');
 Route::delete('courses/{id}','CoursesController@destroy');
+// get lessons by course
+Route::get('courses/{id}/lessons','CoursesController@showLessonsByCourse');
+
+
+// lessons api
+Route::get('lessons','LessonssController@index');
+Route::get('lessons/{id}','LessonssController@show');
+Route::post('lessons','LessonssController@store');
+Route::put('lessons/{id}','LessonssController@update');
+Route::delete('lessons/{id}','LessonssController@destroy');
+
 
 
 // where route is not defined

@@ -20,4 +20,9 @@ class Teacher extends Model
     {
         return $this->hasMany("\App\Course");
     }
+
+    public function lessons()
+    {
+        return $this->hasManyThrough("\App\Lesson","\App\Course");
+    }
 }
