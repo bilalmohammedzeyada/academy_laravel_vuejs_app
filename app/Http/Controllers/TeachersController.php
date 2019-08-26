@@ -34,15 +34,16 @@ class TeachersController extends Controller
     public function store(Request $request)
     {
         // verify user exists
-        $user=User::findOrFail($id);
+        $user=User::findOrFail($request->input('user_id'));
 
+        
         // Check if the user is already a teacher
-        if($user->teacher()!=null){
+        if($user->teacher!=null){
             return abort(400,"the user is already a teacher");
         }
 
         $teacher=new Teacher;
-        $teacher->user_id=$request->input('user_id');
+        $teacher->user_id=$user->id;
         $teacher->about_me=$request->input('about_me');
         
         // the Teacher is not approved when storing
@@ -82,8 +83,11 @@ class TeachersController extends Controller
         $teacher=Teacher::findOrFail($id);
         $teacher->about_me=$request->input('about_me');
         
-        // the Teacher is a approved by admin only storing
-        $teacher->is_approved=false;
+        // the Teacher is a approved by admin only
+        if(auth()->user()->is_admin==1){
+            $teacher->is_approved=input('is_approved');
+        }
+        
     
         // todo this is a file to be uploaded and stored
         $teacher->profile_image="no_profile_image.jpg";

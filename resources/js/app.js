@@ -22,11 +22,22 @@ window.Vue = require("vue");
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 import store from "./store";
 import router from "./routes";
-import AppComponent from "./components/AppComponent.vue";
+/* import AppComponent from "./components/AppComponent.vue";
 import NavbarComponent from "./components/NavbarComponent.vue";
+import FooterComponent from "./components/FooterComponent.vue";
 
 Vue.component("app", AppComponent);
 Vue.component("nav-bar", NavbarComponent);
+Vue.component("footer-comp", FooterComponent); */
+
+Vue.component("app", require("./components/AppComponent.vue").default);
+Vue.component("nav-bar", require("./components/NavbarComponent.vue").default);
+Vue.component("explore", require("./components/ExploreComponent.vue").default);
+Vue.component("login", require("./components/LoginComponent.vue").default);
+Vue.component(
+    "register",
+    require("./components/RegisterComponent.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

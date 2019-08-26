@@ -2,12 +2,18 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 /* import ChangePassword from '../components/ChangePassword.vue' */
-import AppComponent from "../components/AppComponent.vue";
+import HomeComponent from "../components/HomeComponent.vue";
+import ExploreComponent from "../components/ExploreComponent.vue";
+import LoginComponent from "../components/LoginComponent.vue";
+import RegisterComponent from "../components/RegisterComponent.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
-    { path: "/", component: AppComponent }
+    { path: "/", component: HomeComponent, name: "Home" },
+    { path: "/explore", component: ExploreComponent, name: "Explore" },
+    { path: "/login", component: LoginComponent, name: "Login" },
+    { path: "/register", component: RegisterComponent, name: "Register" }
     /* { path: '/change-password', component: ChangePassword, name: 'auth.change_password' },
     { path: '/roles', component: RolesIndex, name: 'roles.index' },
     { path: '/roles/create', component: RolesCreate, name: 'roles.create' },

@@ -16,32 +16,23 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/home">
-            Home
-            <span class="sr-only">(current)</span>
-          </a>
+          <router-link class="nav-link" to="/">Home</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/services">
-            Services
-            <span class="sr-only">(current)</span>
-          </a>
+          <router-link class="nav-link" to="/explore">Explore</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/about">
-            About
-            <span class="sr-only">(current)</span>
-          </a>
+          <router-link class="nav-link" to="/about">About</router-link>
         </li>
       </ul>
 
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <router-link class="nav-link" to="/login">Login</router-link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
+          <router-link class="nav-link" to="/register">Regsiter</router-link>
         </li>
       </ul>
     </div>
