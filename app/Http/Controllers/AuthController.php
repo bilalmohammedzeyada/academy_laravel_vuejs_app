@@ -18,10 +18,9 @@ class AuthController extends Controller
     {
         $validatedData=$request->validate([
             "username"=>"required|max:192|unique:users",
-            "email"=>"email|required|max:192|unique:users",
+            "email"=>"email:filter|required|max:192|unique:users",
             "password"=>"required|max:192",
-            "first_name"=>"required|max:192",
-            
+            "first_name"=>"required|max:192",     
             "last_name"=>"required|max:192",
         ]);
 
@@ -57,7 +56,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $loginData=$request->validate([
-            "email"=>"email|required",
+            "email"=>"email:filter|required",
             "password"=>"required",
         ]);
 
